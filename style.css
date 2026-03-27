@@ -56,7 +56,10 @@ body {
     width: 100%;
     position: relative;
     display: flex;
-    padding-top: 3rem;
+    gap: 2rem;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 3rem 1.5rem 0;
 }
 .content .left, .content .right{
     position: relative;
@@ -66,10 +69,10 @@ body {
     align-items: center;
 }
 .content .left{
-    width: 40%;
+    flex: 1 1 320px;
 }
 .content .right{
-    width: 60%;
+    flex: 1 1 420px;
 }
 .left .btn{
     transform: scale(0);
@@ -126,7 +129,7 @@ body {
     display: flex;
     justify-content: center;
     font-family: "Titan One", sans-serif;
-    font-size: 3rem;
+    font-size: clamp(1.8rem, 3.5vw, 3rem);
     flex-direction: column;
     perspective: 1000px;
 }
@@ -198,6 +201,7 @@ body {
     opacity: 0;
     visibility: hidden;
     width: 0px;
+    max-width: 90%;
     animation: dateOfBirth 5s 9s forwards;
 }
 @keyframes dateOfBirth{
@@ -252,8 +256,8 @@ body {
 }
 .content .right .image{
     position: relative;
-    width: 400px;
-    height: 400px;
+    width: clamp(220px, 35vw, 400px);
+    height: clamp(220px, 35vw, 400px);
     border-radius: 50%;
     overflow: hidden;
     display: flex;
@@ -454,6 +458,11 @@ body {
     animation: scaleCricle 3s 15s forwards ease-in-out;
 }
 
+.flag__birthday img{
+    max-width: min(45vw, 350px);
+    height: auto;
+}
+
 
 .box__letter{
     position: fixed;
@@ -615,6 +624,38 @@ body {
     transform: translateX(-50%);
     font-size: 1rem;
 }
+@media screen and (max-width: 820px) {
+    .content{
+        flex-direction: column;
+        align-items: center;
+        gap: 1.5rem;
+    }
+
+    .content .left,
+    .content .right{
+        width: 100%;
+    }
+
+    .cricle{
+        position: relative;
+        top: auto;
+        right: auto;
+        margin-top: 1rem;
+    }
+
+    .right .balloon_one{
+        top: -20px;
+        left: -40px;
+        transform: scale(0.9);
+    }
+
+    .right .balloon_two{
+        top: 120px;
+        right: -40px;
+        transform: rotate(10deg) scale(0.9);
+    }
+}
+
 
 #copy a {
     text-decoration: none;
