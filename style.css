@@ -637,7 +637,7 @@ body {
     }
 
     .flag__birthday .flag__right {
-        transform: rotate(10deg) translate(-106px,39px) scaleX(-1);
+        transform: rotate(10deg) translate(-62px,30px) scaleX(-1);
     }
 
     .content {
