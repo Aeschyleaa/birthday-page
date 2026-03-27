@@ -26,6 +26,22 @@
 
   <body>
     <div id="wrapper">
+      <div class="audio-control">
+        <button
+          id="audio-toggle"
+          class="audio-toggle"
+          type="button"
+          aria-pressed="true"
+          aria-label="Unmute music"
+          title="Unmute music"
+        >
+          <i class="fa-solid fa-volume-xmark"></i>
+        </button>
+        <audio id="birthday-audio" autoplay muted loop preload="auto">
+          <source src="./songs/birthday-song.mp3" type="audio/mpeg" />
+          Your browser does not support the audio element.
+        </audio>
+      </div>
       <div class="flag__birthday">
         <img src="./images/1.png" alt="" width="350" class="flag__left" />
         <img src="./images/1.png" alt="" width="350" class="flag__right" />
@@ -263,5 +279,41 @@
     close.addEventListener("click", function () {
       boxmail.classList.remove("active");
     });
+
+    const audioEl = document.getElementById("birthday-audio");
+    const audioToggle = document.getElementById("audio-toggle");
+    if (audioEl && audioToggle) {
+      audioEl.muted = true;
+      const tryPlay = () => {
+        audioEl.play().catch(() => {});
+      };
+      window.addEventListener("load", tryPlay);
+      const unlockAudio = () => {
+        tryPlay();
+        document.removeEventListener("click", unlockAudio);
+        document.removeEventListener("touchstart", unlockAudio);
+      };
+      document.addEventListener("click", unlockAudio);
+      document.addEventListener("touchstart", unlockAudio);
+      const updateToggle = () => {
+        if (audioEl.muted) {
+          audioToggle.innerHTML = '<i class="fa-solid fa-volume-xmark"></i>';
+          audioToggle.setAttribute("aria-pressed", "true");
+          audioToggle.setAttribute("aria-label", "Unmute music");
+          audioToggle.title = "Unmute music";
+        } else {
+          audioToggle.innerHTML = '<i class="fa-solid fa-volume-high"></i>';
+          audioToggle.setAttribute("aria-pressed", "false");
+          audioToggle.setAttribute("aria-label", "Mute music");
+          audioToggle.title = "Mute music";
+        }
+      };
+      updateToggle();
+      audioToggle.addEventListener("click", () => {
+        audioEl.muted = !audioEl.muted;
+        tryPlay();
+        updateToggle();
+      });
+    }
   </script>
 </html>

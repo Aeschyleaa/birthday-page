@@ -59,6 +59,44 @@ body {
   overflow: hidden;
   z-index: 1;
 }
+.audio-control {
+  position: fixed;
+  top: 16px;
+  right: 16px;
+  z-index: 1000;
+  background: rgba(255, 255, 255, 0.92);
+  border: 3px solid var(--color-black);
+  border-radius: 12px;
+  padding: 6px 8px;
+  box-shadow: rgba(0, 0, 0, 0.2) 0px 4px 12px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.audio-control audio {
+  display: none;
+}
+.audio-toggle {
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  border: 3px solid var(--color-black);
+  background: var(--color-text-pink);
+  color: var(--color-white);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.1rem;
+  cursor: pointer;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+.audio-toggle:hover {
+  box-shadow: rgba(0, 0, 0, 0.2) 0px 3px 8px;
+  transform: translateY(-1px);
+}
+.audio-toggle:active {
+  transform: scale(0.95);
+}
 .flag__birthday {
   display: flex;
   justify-content: space-between;
@@ -675,6 +713,19 @@ body {
 }
 
 @media screen and (max-width: 658px) {
+  .audio-control {
+    top: 10px;
+    right: 10px;
+    padding: 4px 6px;
+    border-width: 2px;
+  }
+  .audio-toggle {
+    width: 36px;
+    height: 36px;
+    border-width: 2px;
+    font-size: 1rem;
+  }
+
   .flag__birthday .flag__left {
     transform: rotate(-10deg) translate(-119px, 3px);
   }
